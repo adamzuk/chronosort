@@ -12,7 +12,7 @@ namespace ChronoSortCore.Parameters
 
         public override bool Validate()
         {
-            throw new NotImplementedException();
+            return this.Value != null;
         }
     }
 }

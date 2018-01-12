@@ -13,16 +13,24 @@ namespace ChronoSortCore.Parameters
 
             var types = assembly.GetTypes().Where(t => t.GetTypeInfo().BaseType == typeof(Parameter)).ToList();
 
+            Parameter result = null;
+
             var correctType = types.FirstOrDefault(t =>
             {
-                var instance = Activator.CreateInstance(t) as Parameter;
+                result = Activator.CreateInstance(t) as Parameter;
 
-                var splittedCommand = command.Split(new[] { ' ' }, 2).First();
+                var splittedCommand = command.Split(new[] { ' ' }, 2);
+                var parameter = splittedCommand.First();
 
-                return splittedCommand == instance.ShortOption || splittedCommand == instance.LongOption;
+                if (splittedCommand.Count() == 2)
+                {
+                    result.Value = splittedCommand.Last();
+                }
+
+                return parameter == result.ShortOption || parameter == result.LongOption;
             });
 
-            return correctType == null ? null : Activator.CreateInstance(correctType) as Parameter;
+            return correctType == null ? null : result;
         }
     }
 }

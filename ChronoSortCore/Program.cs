@@ -29,8 +29,8 @@ namespace ChronoSortCore
                     Logger.GetLoggerInstance().Error(string.Format("Unable to match '{0}' with any known parameter. Type -h/help for manual."));
                     return false;
                 }
+                return parameter.Validate();
             }
-            return true;
         }
     }
 }

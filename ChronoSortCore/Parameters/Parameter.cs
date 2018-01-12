@@ -6,6 +6,8 @@
 
         public string LongOption { get; set; }
 
+        public string Value { get; set; }
+
         public abstract bool Validate();
     }
 }

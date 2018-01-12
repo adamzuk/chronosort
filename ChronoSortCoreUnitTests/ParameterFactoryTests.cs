@@ -8,7 +8,7 @@ namespace ChronoSortCoreUnitTests
     public class ParameterFactoryTests
     {
         [TestMethod]
-        public void ParameterFactoryShortOptionPositive()
+        public void ParameterFactoryShortOptionPositiveTest()
         {
             var command = @"-s C:\some\path\to\file";
 
@@ -18,7 +18,7 @@ namespace ChronoSortCoreUnitTests
         }
 
         [TestMethod]
-        public void ParameterFactoryShortOptionNegative()
+        public void ParameterFactoryShortOptionNegativeTest()
         {
             var command = @"-ss C:\some\path\to\file";
 
@@ -28,7 +28,7 @@ namespace ChronoSortCoreUnitTests
         }
 
         [TestMethod]
-        public void ParameterFactoryLongOptionPositive()
+        public void ParameterFactoryLongOptionPositiveTest()
         {
             var command = @"-short C:\some\path\to\file";
 
@@ -38,13 +38,35 @@ namespace ChronoSortCoreUnitTests
         }
 
         [TestMethod]
-        public void ParameterFactoryLongOptionNegative()
+        public void ParameterFactoryLongOptionNegativeTest()
         {
             var command = @"-shorts C:\some\path\to\file";
 
             var parameter = ParameterFactory.GetParameter(command);
 
             Assert.IsNull(parameter);
+        }
+
+        [TestMethod]
+        public void ParameterFactoryHelpTest()
+        {
+            var command = @"-h";
+
+            var parameter = ParameterFactory.GetParameter(command);
+
+            Assert.IsTrue(parameter.GetType() == typeof(Help) && parameter.Validate());
+
+            command = @"-help";
+
+            parameter = ParameterFactory.GetParameter(command);
+
+            Assert.IsTrue(parameter.GetType() == typeof(Help) && parameter.Validate());
+
+            command = @"-help something\here";
+
+            parameter = ParameterFactory.GetParameter(command);
+
+            Assert.IsFalse(parameter.Validate());
         }
     }
 }
