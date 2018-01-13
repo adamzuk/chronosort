@@ -2,7 +2,7 @@
 
 namespace UI.Models
 {
-    [XmlRoot("Foo")]
+    [XmlRoot("Item")]
     public class Item
     {
         public string CurrentPath { get; set; }

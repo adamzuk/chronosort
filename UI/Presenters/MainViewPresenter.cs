@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -126,6 +127,8 @@ namespace UI.Presenters
             {
                 ser.Serialize(fs, this._items);
             }
+
+            Process.Start("ChronoSortCore.exe", string.Format("-source {0}", Application.StartupPath + @"\config.xml"));
         }
     }
 }

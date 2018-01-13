@@ -23,6 +23,8 @@ namespace ChronoSortCore.Utils
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine(text);
+
+            Console.ResetColor();
         }
 
         public virtual void Info(string text)
@@ -30,6 +32,8 @@ namespace ChronoSortCore.Utils
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(text);
+
+            Console.ResetColor();
         }
 
         public virtual void Warning(string text)
@@ -37,6 +41,8 @@ namespace ChronoSortCore.Utils
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(text);
+
+            Console.ResetColor();
         }
     }
 }
