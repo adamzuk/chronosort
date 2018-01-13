@@ -14,7 +14,7 @@ namespace ChronoSortCore
 
         private static bool ValidateArgs(string[] args)
         {
-            if (args.Length != 2)
+            if (args.Length != 1)
             {
                 Logger.GetLoggerInstance().Error("Invalid number of parameters.");
                 return false;

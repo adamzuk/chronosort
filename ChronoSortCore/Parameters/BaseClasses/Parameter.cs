@@ -9,5 +9,9 @@
         public string Value { get; set; }
 
         public abstract bool Validate();
+
+        public abstract void Execute();
+
+        public abstract string GetUsage();
     }
 }

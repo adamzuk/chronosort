@@ -30,7 +30,7 @@ namespace ChronoSortCoreUnitTests
         [TestMethod]
         public void ParameterFactoryLongOptionPositiveTest()
         {
-            var command = @"-short C:\some\path\to\file";
+            var command = @"-source C:\some\path\to\file";
 
             var parameter = ParameterFactory.GetParameter(command);
 
@@ -40,7 +40,7 @@ namespace ChronoSortCoreUnitTests
         [TestMethod]
         public void ParameterFactoryLongOptionNegativeTest()
         {
-            var command = @"-shorts C:\some\path\to\file";
+            var command = @"-sources C:\some\path\to\file";
 
             var parameter = ParameterFactory.GetParameter(command);
 
