@@ -44,6 +44,7 @@
             this.lblNewOrderDirectoryPathValue = new System.Windows.Forms.Label();
             this.butNewOrderUp = new System.Windows.Forms.Button();
             this.butNewOrderDown = new System.Windows.Forms.Button();
+            this.butBeginSort = new System.Windows.Forms.Button();
             this.grpBrowser.SuspendLayout();
             this.grpNewOrder.SuspendLayout();
             this.grpPreview.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             this.grpNewOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNewOrder.Controls.Add(this.butBeginSort);
             this.grpNewOrder.Controls.Add(this.butNewOrderDown);
             this.grpNewOrder.Controls.Add(this.butNewOrderUp);
             this.grpNewOrder.Controls.Add(this.lblNewOrderDirectoryPathValue);
@@ -193,15 +195,15 @@
             this.butAddSelectedFiles.TabIndex = 6;
             this.butAddSelectedFiles.Text = "Add selected files";
             this.butAddSelectedFiles.UseVisualStyleBackColor = true;
+            this.butAddSelectedFiles.Click += new System.EventHandler(this.butAddSelectedFiles_Click);
             // 
             // butRemoveSelectedFiles
             // 
-            this.butRemoveSelectedFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.butRemoveSelectedFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.butRemoveSelectedFiles.Location = new System.Drawing.Point(17, 342);
             this.butRemoveSelectedFiles.Name = "butRemoveSelectedFiles";
-            this.butRemoveSelectedFiles.Size = new System.Drawing.Size(580, 34);
+            this.butRemoveSelectedFiles.Size = new System.Drawing.Size(282, 34);
             this.butRemoveSelectedFiles.TabIndex = 7;
             this.butRemoveSelectedFiles.Text = "Remove selected files";
             this.butRemoveSelectedFiles.UseVisualStyleBackColor = true;
@@ -236,6 +238,18 @@
             this.butNewOrderDown.Text = "▼";
             this.butNewOrderDown.UseVisualStyleBackColor = true;
             // 
+            // butBeginSort
+            // 
+            this.butBeginSort.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.butBeginSort.Location = new System.Drawing.Point(326, 342);
+            this.butBeginSort.Name = "butBeginSort";
+            this.butBeginSort.Size = new System.Drawing.Size(271, 34);
+            this.butBeginSort.TabIndex = 11;
+            this.butBeginSort.Text = "Begin!";
+            this.butBeginSort.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,10 +276,8 @@
         private System.Windows.Forms.GroupBox grpBrowser;
         private System.Windows.Forms.GroupBox grpNewOrder;
         private System.Windows.Forms.GroupBox grpPreview;
-        private System.Windows.Forms.ListBox lstNewOrder;
         private System.Windows.Forms.Button butChangeNewOrderDirectory;
         private System.Windows.Forms.Label lblNewOrderDirectoryPath;
-        private System.Windows.Forms.ListBox lstDirectoryFiles;
         private System.Windows.Forms.Button butChangeDirectory;
         private System.Windows.Forms.Label lblDirectoryPathValue;
         private System.Windows.Forms.Label lblDirectoryPath;
@@ -275,6 +287,9 @@
         private System.Windows.Forms.Button butNewOrderDown;
         private System.Windows.Forms.Button butNewOrderUp;
         public System.Windows.Forms.PictureBox picPreview;
+        private System.Windows.Forms.Button butBeginSort;
+        public System.Windows.Forms.ListBox lstNewOrder;
+        public System.Windows.Forms.ListBox lstDirectoryFiles;
     }
 }
 

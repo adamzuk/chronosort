@@ -22,22 +22,27 @@ namespace UI
 
         private void butChangeDirectory_Click(object sender, EventArgs e)
         {
-            this.Presenter.OnChangeDirectoryClicked(lstDirectoryFiles, lblDirectoryPathValue);
+            this.Presenter.OnChangeDirectoryClick(lstDirectoryFiles, lblDirectoryPathValue);
         }
 
         private void butChangeNewOrderDirectory_Click(object sender, EventArgs e)
         {
-            this.Presenter.OnChangeDirectoryClicked(lstNewOrder, lblNewOrderDirectoryPathValue);
+            this.Presenter.OnChangeDirectoryClick(lstNewOrder, lblNewOrderDirectoryPathValue);
         }
 
         private void lstDirectoryFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Presenter.OnPictureFileSelected(lstDirectoryFiles);
+            this.Presenter.OnPictureFileSelect(lstDirectoryFiles);
         }
 
         private void lstNewOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Presenter.OnPictureFileSelected(lstNewOrder);
+            this.Presenter.OnPictureFileSelect(lstNewOrder);
+        }
+
+        private void butAddSelectedFiles_Click(object sender, EventArgs e)
+        {
+            this.Presenter.OnFilesAddButtonClick();
         }
     }
 }

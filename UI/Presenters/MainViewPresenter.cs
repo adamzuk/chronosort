@@ -11,19 +11,19 @@ namespace UI.Presenters
 {
     public class MainViewPresenter
     {
-        private List<Item> items;
+        private List<Item> _items;
 
-        private MainView view;
+        private MainView _view;
 
         public MainViewPresenter(List<Item> items, MainView view)
         {
-            this.items = items;
-            this.view = view;
+            this._items = items;
+            this._view = view;
 
-            this.view.Presenter = this;
+            this._view.Presenter = this;
         }
 
-        public void OnChangeDirectoryClicked(ListBox listBox, Label directoryValueLabel)
+        public void OnChangeDirectoryClick(ListBox listBox, Label directoryValueLabel)
         {
             using (var directoryDialog = new FolderBrowserDialog())
             {
@@ -40,9 +40,21 @@ namespace UI.Presenters
             }
         }
 
-        public void OnPictureFileSelected(ListBox sender)
+        public void OnPictureFileSelect(ListBox sender)
         {
-            this.view.picPreview.ImageLocation = sender.SelectedItem.ToString();
+            if (sender.SelectedItem == null)
+            {
+                return;
+            }
+            this._view.picPreview.ImageLocation = sender.SelectedItem.ToString();
+        }
+
+        public void OnFilesAddButtonClick()
+        {
+            foreach (var item in this._view.lstDirectoryFiles.SelectedItems)
+            {
+                this._view.lstNewOrder.Items.Add(item.ToString());
+            }
         }
     }
 }
