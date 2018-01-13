@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Presenters;
 
@@ -43,6 +36,21 @@ namespace UI
         private void butAddSelectedFiles_Click(object sender, EventArgs e)
         {
             this.Presenter.OnFilesAddButtonClick();
+        }
+
+        private void butRemoveSelectedFiles_Click(object sender, EventArgs e)
+        {
+            this.Presenter.OnRemoveFilesButtonClick();
+        }
+
+        private void butNewOrderUp_Click(object sender, EventArgs e)
+        {
+            this.Presenter.OnArrowButtonClick(-1);
+        }
+
+        private void butNewOrderDown_Click(object sender, EventArgs e)
+        {
+            this.Presenter.OnArrowButtonClick(1);
         }
     }
 }

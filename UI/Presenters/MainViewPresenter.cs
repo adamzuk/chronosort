@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Models;
 
@@ -55,6 +53,42 @@ namespace UI.Presenters
             {
                 this._view.lstNewOrder.Items.Add(item.ToString());
             }
+        }
+
+        public void OnRemoveFilesButtonClick()
+        {
+            var selItems = new List<string>();
+
+            foreach (var item in this._view.lstNewOrder.SelectedItems)
+            {
+                selItems.Add(item.ToString());
+            }
+
+            foreach (var item in selItems)
+            {
+                this._view.lstNewOrder.Items.Remove(item);
+            }
+        }
+
+        public void OnArrowButtonClick(int direction)
+        {
+            if (this._view.lstNewOrder.SelectedItem == null || this._view.lstNewOrder.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            int newIndex = this._view.lstNewOrder.SelectedIndex + direction;
+
+            if (newIndex < 0 || newIndex >= this._view.lstNewOrder.Items.Count)
+            {
+                return;
+            }
+
+            var selected = this._view.lstNewOrder.SelectedItem;
+
+            this._view.lstNewOrder.Items.Remove(selected);
+            this._view.lstNewOrder.Items.Insert(newIndex, selected);
+            this._view.lstNewOrder.SetSelected(newIndex, true);
         }
     }
 }

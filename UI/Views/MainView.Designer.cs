@@ -107,6 +107,7 @@
             this.lstNewOrder.FormattingEnabled = true;
             this.lstNewOrder.Location = new System.Drawing.Point(17, 58);
             this.lstNewOrder.Name = "lstNewOrder";
+            this.lstNewOrder.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstNewOrder.Size = new System.Drawing.Size(524, 277);
             this.lstNewOrder.TabIndex = 0;
             this.lstNewOrder.SelectedIndexChanged += new System.EventHandler(this.lstNewOrder_SelectedIndexChanged);
@@ -207,6 +208,7 @@
             this.butRemoveSelectedFiles.TabIndex = 7;
             this.butRemoveSelectedFiles.Text = "Remove selected files";
             this.butRemoveSelectedFiles.UseVisualStyleBackColor = true;
+            this.butRemoveSelectedFiles.Click += new System.EventHandler(this.butRemoveSelectedFiles_Click);
             // 
             // lblNewOrderDirectoryPathValue
             // 
@@ -227,6 +229,7 @@
             this.butNewOrderUp.TabIndex = 9;
             this.butNewOrderUp.Text = "▲";
             this.butNewOrderUp.UseVisualStyleBackColor = true;
+            this.butNewOrderUp.Click += new System.EventHandler(this.butNewOrderUp_Click);
             // 
             // butNewOrderDown
             // 
@@ -237,6 +240,7 @@
             this.butNewOrderDown.TabIndex = 10;
             this.butNewOrderDown.Text = "▼";
             this.butNewOrderDown.UseVisualStyleBackColor = true;
+            this.butNewOrderDown.Click += new System.EventHandler(this.butNewOrderDown_Click);
             // 
             // butBeginSort
             // 
