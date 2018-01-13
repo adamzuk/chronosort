@@ -17,7 +17,7 @@ namespace ChronoSortCore.Parameters
 
         public override string GetUsage()
         {
-            return string.Format(@"{0}|{1} Path\To\Config\File    sort files using config file passed as a argument", this.ShortOption, this.LongOption);
+            return string.Format(@"{0}|{1} Path\To\Config\File    sort files using config file passed as an argument", this.ShortOption, this.LongOption);
         }
 
         public override bool Validate()

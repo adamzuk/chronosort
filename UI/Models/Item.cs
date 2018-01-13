@@ -1,4 +1,4 @@
-﻿namespace ChronoSortCore
+﻿namespace UI.Models
 {
     public class Item
     {
