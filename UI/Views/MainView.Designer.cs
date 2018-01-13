@@ -42,6 +42,8 @@
             this.butAddSelectedFiles = new System.Windows.Forms.Button();
             this.butRemoveSelectedFiles = new System.Windows.Forms.Button();
             this.lblNewOrderDirectoryPathValue = new System.Windows.Forms.Label();
+            this.butNewOrderUp = new System.Windows.Forms.Button();
+            this.butNewOrderDown = new System.Windows.Forms.Button();
             this.grpBrowser.SuspendLayout();
             this.grpNewOrder.SuspendLayout();
             this.grpPreview.SuspendLayout();
@@ -68,6 +70,8 @@
             // 
             this.grpNewOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNewOrder.Controls.Add(this.butNewOrderDown);
+            this.grpNewOrder.Controls.Add(this.butNewOrderUp);
             this.grpNewOrder.Controls.Add(this.lblNewOrderDirectoryPathValue);
             this.grpNewOrder.Controls.Add(this.butRemoveSelectedFiles);
             this.grpNewOrder.Controls.Add(this.butChangeNewOrderDirectory);
@@ -101,8 +105,9 @@
             this.lstNewOrder.FormattingEnabled = true;
             this.lstNewOrder.Location = new System.Drawing.Point(17, 58);
             this.lstNewOrder.Name = "lstNewOrder";
-            this.lstNewOrder.Size = new System.Drawing.Size(580, 277);
+            this.lstNewOrder.Size = new System.Drawing.Size(524, 277);
             this.lstNewOrder.TabIndex = 0;
+            this.lstNewOrder.SelectedIndexChanged += new System.EventHandler(this.lstNewOrder_SelectedIndexChanged);
             // 
             // lblNewOrderDirectoryPath
             // 
@@ -122,6 +127,7 @@
             this.butChangeNewOrderDirectory.TabIndex = 3;
             this.butChangeNewOrderDirectory.Text = "...";
             this.butChangeNewOrderDirectory.UseVisualStyleBackColor = true;
+            this.butChangeNewOrderDirectory.Click += new System.EventHandler(this.butChangeNewOrderDirectory_Click);
             // 
             // picPreview
             // 
@@ -132,6 +138,7 @@
             this.picPreview.Location = new System.Drawing.Point(17, 27);
             this.picPreview.Name = "picPreview";
             this.picPreview.Size = new System.Drawing.Size(580, 274);
+            this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPreview.TabIndex = 0;
             this.picPreview.TabStop = false;
             // 
@@ -143,8 +150,10 @@
             this.lstDirectoryFiles.FormattingEnabled = true;
             this.lstDirectoryFiles.Location = new System.Drawing.Point(12, 85);
             this.lstDirectoryFiles.Name = "lstDirectoryFiles";
+            this.lstDirectoryFiles.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstDirectoryFiles.Size = new System.Drawing.Size(340, 576);
             this.lstDirectoryFiles.TabIndex = 1;
+            this.lstDirectoryFiles.SelectedIndexChanged += new System.EventHandler(this.lstDirectoryFiles_SelectedIndexChanged);
             // 
             // lblDirectoryPath
             // 
@@ -157,11 +166,10 @@
             // 
             // lblDirectoryPathValue
             // 
-            this.lblDirectoryPathValue.AutoSize = true;
             this.lblDirectoryPathValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblDirectoryPathValue.Location = new System.Drawing.Point(90, 30);
             this.lblDirectoryPathValue.Name = "lblDirectoryPathValue";
-            this.lblDirectoryPathValue.Size = new System.Drawing.Size(128, 13);
+            this.lblDirectoryPathValue.Size = new System.Drawing.Size(224, 52);
             this.lblDirectoryPathValue.TabIndex = 4;
             this.lblDirectoryPathValue.Text = "No directory selected";
             // 
@@ -174,6 +182,7 @@
             this.butChangeDirectory.TabIndex = 5;
             this.butChangeDirectory.Text = "...";
             this.butChangeDirectory.UseVisualStyleBackColor = true;
+            this.butChangeDirectory.Click += new System.EventHandler(this.butChangeDirectory_Click);
             // 
             // butAddSelectedFiles
             // 
@@ -207,6 +216,26 @@
             this.lblNewOrderDirectoryPathValue.TabIndex = 8;
             this.lblNewOrderDirectoryPathValue.Text = "No directory selected";
             // 
+            // butNewOrderUp
+            // 
+            this.butNewOrderUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butNewOrderUp.Location = new System.Drawing.Point(556, 58);
+            this.butNewOrderUp.Name = "butNewOrderUp";
+            this.butNewOrderUp.Size = new System.Drawing.Size(41, 38);
+            this.butNewOrderUp.TabIndex = 9;
+            this.butNewOrderUp.Text = "▲";
+            this.butNewOrderUp.UseVisualStyleBackColor = true;
+            // 
+            // butNewOrderDown
+            // 
+            this.butNewOrderDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butNewOrderDown.Location = new System.Drawing.Point(556, 296);
+            this.butNewOrderDown.Name = "butNewOrderDown";
+            this.butNewOrderDown.Size = new System.Drawing.Size(41, 38);
+            this.butNewOrderDown.TabIndex = 10;
+            this.butNewOrderDown.Text = "▼";
+            this.butNewOrderDown.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,7 +265,6 @@
         private System.Windows.Forms.ListBox lstNewOrder;
         private System.Windows.Forms.Button butChangeNewOrderDirectory;
         private System.Windows.Forms.Label lblNewOrderDirectoryPath;
-        private System.Windows.Forms.PictureBox picPreview;
         private System.Windows.Forms.ListBox lstDirectoryFiles;
         private System.Windows.Forms.Button butChangeDirectory;
         private System.Windows.Forms.Label lblDirectoryPathValue;
@@ -244,6 +272,9 @@
         private System.Windows.Forms.Button butAddSelectedFiles;
         private System.Windows.Forms.Button butRemoveSelectedFiles;
         private System.Windows.Forms.Label lblNewOrderDirectoryPathValue;
+        private System.Windows.Forms.Button butNewOrderDown;
+        private System.Windows.Forms.Button butNewOrderUp;
+        public System.Windows.Forms.PictureBox picPreview;
     }
 }
 
