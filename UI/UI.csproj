@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemsCollection.cs" />
     <Compile Include="Presenters\MainViewPresenter.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -80,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using UI.Models;
 
 namespace UI.Presenters
 {
     public class MainViewPresenter
     {
-        private List<Item> _items;
+        private ItemsCollection _items;
 
         private MainView _view;
 
-        public MainViewPresenter(List<Item> items, MainView view)
+        public MainViewPresenter(ItemsCollection items, MainView view)
         {
             this._items = items;
             this._view = view;
@@ -33,7 +34,15 @@ namespace UI.Presenters
 
                     var files = Directory.GetFiles(directoryDialog.SelectedPath);
 
-                    listBox.DataSource = files;
+                    if (listBox == this._view.lstDirectoryFiles)
+                    {
+                        listBox.Items.Clear();
+
+                        foreach (var file in files)
+                        {
+                            listBox.Items.Add(file);
+                        }
+                    }
                 }
             }
         }
@@ -93,7 +102,9 @@ namespace UI.Presenters
 
         public void OnBeginButtonClick()
         {
-            if (!Directory.Exists(this._view.lblNewOrderDirectoryPathValue.Text))
+            var newOrderPath = this._view.lblNewOrderDirectoryPathValue.Text;
+
+            if (!Directory.Exists(newOrderPath))
             {
                 MessageBox.Show("Please select output directory", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -102,6 +113,18 @@ namespace UI.Presenters
             {
                 MessageBox.Show("Please add files to new order list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            foreach (var item in this._view.lstNewOrder.Items)
+            {
+                this._items.ItemList.Add(new Item(item.ToString(), newOrderPath));
+            }
+
+            var ser = new XmlSerializer(typeof(ItemsCollection));
+
+            using (FileStream fs = new FileStream(Application.StartupPath + @"\config.xml", FileMode.Create))
+            {
+                ser.Serialize(fs, this._items);
             }
         }
     }

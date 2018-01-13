@@ -20,7 +20,7 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Collection of models
-            var items = new List<Item>();
+            var items = new ItemsCollection();
 
             // View
             var view = new MainView();
