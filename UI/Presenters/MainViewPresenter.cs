@@ -90,5 +90,19 @@ namespace UI.Presenters
             this._view.lstNewOrder.Items.Insert(newIndex, selected);
             this._view.lstNewOrder.SetSelected(newIndex, true);
         }
+
+        public void OnBeginButtonClick()
+        {
+            if (!Directory.Exists(this._view.lblNewOrderDirectoryPathValue.Text))
+            {
+                MessageBox.Show("Please select output directory", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (this._view.lstNewOrder.Items.Count == 0)
+            {
+                MessageBox.Show("Please add files to new order list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
     }
 }

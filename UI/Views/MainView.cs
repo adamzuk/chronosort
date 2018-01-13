@@ -52,5 +52,10 @@ namespace UI
         {
             this.Presenter.OnArrowButtonClick(1);
         }
+
+        private void butBeginSort_Click(object sender, EventArgs e)
+        {
+            this.Presenter.OnBeginButtonClick();
+        }
     }
 }

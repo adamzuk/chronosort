@@ -253,6 +253,7 @@
             this.butBeginSort.TabIndex = 11;
             this.butBeginSort.Text = "Begin!";
             this.butBeginSort.UseVisualStyleBackColor = true;
+            this.butBeginSort.Click += new System.EventHandler(this.butBeginSort_Click);
             // 
             // MainView
             // 
@@ -287,13 +288,13 @@
         private System.Windows.Forms.Label lblDirectoryPath;
         private System.Windows.Forms.Button butAddSelectedFiles;
         private System.Windows.Forms.Button butRemoveSelectedFiles;
-        private System.Windows.Forms.Label lblNewOrderDirectoryPathValue;
         private System.Windows.Forms.Button butNewOrderDown;
         private System.Windows.Forms.Button butNewOrderUp;
         public System.Windows.Forms.PictureBox picPreview;
         private System.Windows.Forms.Button butBeginSort;
         public System.Windows.Forms.ListBox lstNewOrder;
         public System.Windows.Forms.ListBox lstDirectoryFiles;
+        public System.Windows.Forms.Label lblNewOrderDirectoryPathValue;
     }
 }
 
