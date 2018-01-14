@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChronoSortCore.Models;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using UI.Models;
@@ -7,7 +8,7 @@ namespace ChronoSortCore.Utils
 {
     public class SerializationHelper
     {
-        public static ItemsCollection Deserialize(string path)
+        public static List<ItemDecorator> Deserialize(string path)
         {
             ItemsCollection collection = null;
 
@@ -17,7 +18,14 @@ namespace ChronoSortCore.Utils
                 collection = (ItemsCollection)deserializer.Deserialize(reader);
             }
 
-            return collection;
+            var itemList = new List<ItemDecorator>();
+
+            foreach (var item in collection.ItemList)
+            {
+                itemList.Add(new ItemDecorator(item, collection));
+            }
+
+            return itemList;
         }
     }
 }

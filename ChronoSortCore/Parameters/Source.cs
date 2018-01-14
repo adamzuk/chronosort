@@ -17,26 +17,21 @@ namespace ChronoSortCore.Parameters
             {
                 return;
             }
-            Logger.GetLoggerInstance().Info(string.Format("Copying files to new destination using config: {0}", this.Value));
+            Logger.GetLoggerInstance().Info(string.Format("Copying files to new destination using config: {0}\n\n", this.Value));
 
             var collection = SerializationHelper.Deserialize(this.Value);
 
-            var fileNumber = 1;
-
-            foreach (var item in collection.ItemList)
+            foreach (var item in collection)
             {
                 Logger.GetLoggerInstance().Info(string.Format("Copying {0} ...", item.CurrentPath));
 
-                var fileInfo = new FileInfo(item.CurrentPath);
-
-                File.Copy(item.CurrentPath, string.Format(@"{0}\{1}{2}", item.NewPath, fileNumber, fileInfo.Extension));
-                fileNumber++;
+                File.Copy(item.CurrentPath, item.GetNewPath());
             }
         }
 
         public override string GetUsage()
         {
-            return string.Format(@"{0}|{1} Path\To\Config\File    sort files using config file passed as an argument", this.ShortOption, this.LongOption);
+            return string.Format(@"{0}|{1} Path\To\Config\File            sort files using config file passed as an argument", this.ShortOption, this.LongOption);
         }
 
         public override bool Validate()

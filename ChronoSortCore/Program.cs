@@ -16,8 +16,6 @@ namespace ChronoSortCore
                 return;
             }
             parameter.Execute();
-
-            Console.ReadKey();
         }
     }
 }

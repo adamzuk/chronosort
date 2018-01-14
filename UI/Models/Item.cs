@@ -3,12 +3,8 @@
 namespace UI.Models
 {
     [XmlRoot("Item")]
-    public class Item
+    public class Item : AbstractItem
     {
-        public string CurrentPath { get; set; }
-
-        public string NewPath { get; set; }
-
         public Item()
         {
 

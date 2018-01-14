@@ -20,7 +20,7 @@ namespace ChronoSortCore.Parameters
 
         public override string GetUsage()
         {
-            return string.Format("{0}|{1}    display this manual", this.ShortOption, this.LongOption);
+            return string.Format("{0}|{1}            display this manual", this.ShortOption, this.LongOption);
         }
 
         public override bool Validate()

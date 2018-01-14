@@ -6,11 +6,11 @@ namespace UI.Models
     public class ItemsCollection
     {
         [XmlArray("ItemList"), XmlArrayItem(typeof(Item), ElementName = "Item")]
-        public List<Item> ItemList { get; set; }
+        public List<AbstractItem> ItemList { get; set; }
 
         public ItemsCollection()
         {
-            this.ItemList = new List<Item>();
+            this.ItemList = new List<AbstractItem>();
         }
     }
 }
