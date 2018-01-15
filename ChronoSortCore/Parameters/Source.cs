@@ -1,4 +1,5 @@
-﻿using ChronoSortCore.Utils;
+﻿using ChronoSortCore.Models;
+using ChronoSortCore.Utils;
 using System.IO;
 
 namespace ChronoSortCore.Parameters
@@ -13,15 +14,12 @@ namespace ChronoSortCore.Parameters
 
         public override void Execute()
         {
-            if (!Validation.ValidateIfFileExists(this.Value))
-            {
-                return;
-            }
             Logger.GetLoggerInstance().Info(string.Format("Copying files to new destination using config: {0}\n\n", this.Value));
 
-            var collection = SerializationHelper.Deserialize(this.Value);
+            var iterator = new CollectionInterator(SerializationHelper.Deserialize(this.Value));
+            ItemDecorator item = null;
 
-            foreach (var item in collection)
+            while ((item = iterator.Next()) != null)
             {
                 Logger.GetLoggerInstance().Info(string.Format("Copying {0} ...", item.CurrentPath));
 
