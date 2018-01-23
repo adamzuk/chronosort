@@ -10,7 +10,7 @@
 
         public abstract bool Validate();
 
-        public abstract void Execute();
+        public abstract int Execute();
 
         public abstract string GetUsage();
     }

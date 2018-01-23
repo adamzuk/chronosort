@@ -1,5 +1,7 @@
 ﻿using ChronoSortCore.Models;
 using ChronoSortCore.Utils;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace ChronoSortCore.Parameters
@@ -12,11 +14,22 @@ namespace ChronoSortCore.Parameters
             this.LongOption = "-source";
         }
 
-        public override void Execute()
+        public override int Execute()
         {
             Logger.GetLoggerInstance().Info(string.Format("Copying files to new destination using config: {0}\n\n", this.Value));
 
-            var iterator = new CollectionInterator(SerializationHelper.Deserialize(this.Value));
+            List<ItemDecorator> deserializedConfig;
+            try
+            {
+                deserializedConfig = SerializationHelper.Deserialize(this.Value);
+            }
+            catch (Exception e)
+            {
+                Logger.GetLoggerInstance().Error(string.Format("Unable to deserialize config file: {0}", e.Message));
+                return -1;
+            }
+
+            var iterator = new CollectionInterator(deserializedConfig);
             ItemDecorator item = null;
 
             while ((item = iterator.Next()) != null)
@@ -25,6 +38,7 @@ namespace ChronoSortCore.Parameters
 
                 File.Copy(item.CurrentPath, item.GetNewPath());
             }
+            return 0;
         }
 
         public override string GetUsage()

@@ -13,9 +13,11 @@ namespace ChronoSortCore.Parameters
             this.LongOption = "-help";
         }
 
-        public override void Execute()
+        public override int Execute()
         {
             Logger.GetLoggerInstance().Info(this.GetHelpString());
+
+            return 0;
         }
 
         public override string GetUsage()

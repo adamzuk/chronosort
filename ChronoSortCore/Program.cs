@@ -5,7 +5,7 @@ namespace ChronoSortCore
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             var newArgs = string.Join(" ", args);
 
@@ -13,9 +13,9 @@ namespace ChronoSortCore
 
             if (parameter == null)
             {
-                return;
+                return -1;
             }
-            parameter.Execute();
+            return parameter.Execute();
         }
     }
 }

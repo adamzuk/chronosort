@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using UI.Models;
@@ -14,6 +15,8 @@ namespace UI.Presenters
         private ItemsCollection _items;
 
         private MainView _view;
+
+        private Process _process;
 
         public MainViewPresenter(ItemsCollection items, MainView view)
         {
@@ -128,7 +131,33 @@ namespace UI.Presenters
                 ser.Serialize(fs, this._items);
             }
 
-            Process.Start("ChronoSortCore.exe", string.Format("-source {0}", Application.StartupPath + @"\config.xml"));
+            this._view.Enabled = false;
+
+            this._process = new Process();
+            this._process.StartInfo.FileName = "ChronoSortCore.exe";
+            this._process.StartInfo.Arguments = string.Format("-source {0}", Application.StartupPath + @"\config.xml");
+            this._process.StartInfo.CreateNoWindow = true;
+            this._process.StartInfo.UseShellExecute = false;
+            this._process.StartInfo.RedirectStandardOutput = true;
+            this._process.Start();
+            this._process.BeginOutputReadLine();
+            this._process.WaitForExit();
+
+            this._view.Enabled = true;
+
+            this.ValidateExecution(this._process.ExitCode);
+        }
+
+        private void ValidateExecution(int returnCode)
+        {
+            if (returnCode == 0)
+            {
+                MessageBox.Show("Sorting completed.", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("An error occured.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
